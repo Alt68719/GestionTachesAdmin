@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using GestionTachesAdmin.DataAccess;
 using GestionTachesAdmin.Models;
 
@@ -6,6 +10,7 @@ namespace GestionTachesAdmin
     public partial class FormAdmin : Form
     {
         private AttributionDAO attributionDAO;
+
         public FormAdmin()
         {
             InitializeComponent();
@@ -16,6 +21,7 @@ namespace GestionTachesAdmin
         {
             ChargerDonnees();
         }
+
         private void ChargerDonnees()
         {
             try
@@ -23,47 +29,51 @@ namespace GestionTachesAdmin
                 List<Employe> employes = attributionDAO.GetEmployes();
                 cmbEmployes.DataSource = employes;
                 cmbEmployes.DisplayMember = "NomComplet";
-                cmbEmployes.DisplayMember = "Matricule";
+                cmbEmployes.ValueMember = "Matricule";
 
                 List<Tache> taches = attributionDAO.GetTacheDispo();
                 cmbTaches.DataSource = taches;
                 cmbTaches.DisplayMember = "titre";
                 cmbTaches.ValueMember = "Idtache";
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur lors du chargement des données : " + ex.Message + ", Erreur BD");
             }
-
         }
 
         private void btnAttribuer_Click(object sender, EventArgs e)
         {
+            // Vérification que les champs ne sont pas vides
             if (cmbEmployes.SelectedValue == null || cmbTaches.SelectedValue == null)
             {
                 MessageBox.Show("Veuillez sélectionner un employé et une tâche.");
                 return;
             }
+
+            // Récupération des valeurs
             string matricule = cmbEmployes.SelectedValue.ToString();
             int idtache = (int)cmbTaches.SelectedValue;
-            Tache tacheselectionner = (Tache)cmbTaches.SelectedValue;
-            string titretache = tacheselectionner.titre;
+
+            var liste = (List<Tache>)cmbTaches.DataSource;
+            var tacheSelectionnee = liste.FirstOrDefault(t => t.Idtache == idtache);
+            string titretache = tacheSelectionnee?.titre ?? "Titre inconnu";
 
             try
             {
-                bool succes = attributionDAO.AttribuerTache(matricule, idtache);
+                
+                bool succes = attributionDAO.AttribuerEtNotifier(matricule, idtache, titretache);
+
                 if (succes)
                 {
                     MessageBox.Show($"La tâche '{titretache}' a été attribuée à l'employé '{matricule}' avec succès.");
-                    ChargerDonnees(); // Recharger les données pour mettre à jour la liste des tâches disponibles
+                    
+                    ChargerDonnees();
                 }
                 else
                 {
                     MessageBox.Show("Échec de l'attribution de la tâche.");
                 }
-
             }
             catch (Exception ex)
             {
@@ -72,4 +82,3 @@ namespace GestionTachesAdmin
         }
     }
 }
-

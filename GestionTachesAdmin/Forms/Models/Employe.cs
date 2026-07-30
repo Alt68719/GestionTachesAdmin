@@ -12,7 +12,7 @@ namespace GestionTachesAdmin.Models
         public string nom { get; set; }
         public string prenom { get; set; }
         public string poste { get; set; }
-        public string NomComplet => $"{nom} {prenom}";
+        public string NomComplet => $"{nom} {prenom} ( {Matricule} )";
 
     }
 }
