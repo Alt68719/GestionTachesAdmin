@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using GestionTachesAdmin.DataAccess;
+using GestionTachesAdmin.Forms.Models;
 using GestionTachesAdmin.Models;
 
 namespace GestionTachesAdmin
@@ -10,6 +11,8 @@ namespace GestionTachesAdmin
     public partial class FormAdmin : Form
     {
         private AttributionDAO attributionDAO;
+
+        public int IdHistorique { get; private set; }
 
         public FormAdmin()
         {
@@ -35,23 +38,50 @@ namespace GestionTachesAdmin
                 cmbTaches.DataSource = taches;
                 cmbTaches.DisplayMember = "titre";
                 cmbTaches.ValueMember = "Idtache";
-            }
+
+                List<HistoriqueItem> historique = attributionDAO.GetHisorique();
+                dgvHistorique.DataSource = null;
+                dgvHistorique.DataSource = historique;
+
+                if (dgvHistorique.Columns["IdHistorique"] != null)
+                {
+                    dgvHistorique.Columns["IdHistorique"].HeaderText = "ID";
+                }
+                if (dgvHistorique.Columns["actionRealisee"]!= null)
+                {
+                    dgvHistorique.Columns["actionRealisee"].HeaderText = "Action réalisée";
+                }
+                if (dgvHistorique.Columns["DateAction"] != null)
+                {
+                    dgvHistorique.Columns["DateAction"].HeaderText = "Date & Heure";
+                }
+                if (dgvHistorique.Columns["Employe"]!=null)
+                {
+                    dgvHistorique.Columns["Employe"].HeaderText = "Employé concerné";
+                }
+                if (dgvHistorique.Columns["Tache"]!=null)
+                {
+                    dgvHistorique.Columns["Tache"].HeaderText = "Tâche";
+                }
+                
+
+                }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur lors du chargement des données : " + ex.Message + ", Erreur BD");
+                 MessageBox.Show("Erreur lors du chargement des données : " + ex.Message + ", Erreur BD");
             }
         }
 
         private void btnAttribuer_Click(object sender, EventArgs e)
         {
-            // Vérification que les champs ne sont pas vides
+
             if (cmbEmployes.SelectedValue == null || cmbTaches.SelectedValue == null)
             {
                 MessageBox.Show("Veuillez sélectionner un employé et une tâche.");
                 return;
             }
 
-            // Récupération des valeurs
+
             string matricule = cmbEmployes.SelectedValue.ToString();
             int idtache = (int)cmbTaches.SelectedValue;
 
@@ -61,13 +91,13 @@ namespace GestionTachesAdmin
 
             try
             {
-                
+
                 bool succes = attributionDAO.AttribuerEtNotifier(matricule, idtache, titretache);
 
                 if (succes)
                 {
                     MessageBox.Show($"La tâche '{titretache}' a été attribuée à l'employé '{matricule}' avec succès.");
-                    
+
                     ChargerDonnees();
                 }
                 else
@@ -80,5 +110,6 @@ namespace GestionTachesAdmin
                 MessageBox.Show("Erreur lors de l'attribution de la tâche : " + ex.Message);
             }
         }
+
     }
 }

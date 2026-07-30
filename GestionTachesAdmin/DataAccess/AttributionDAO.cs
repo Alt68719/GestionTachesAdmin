@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using GestionTachesAdmin.Models;
+using GestionTachesAdmin.Forms.Models;
 
 namespace GestionTachesAdmin.DataAccess
 {
@@ -123,6 +124,38 @@ namespace GestionTachesAdmin.DataAccess
                     }
                 }
             }
+        }
+    
+    public List<HistoriqueItem> GetHisorique()
+
+        {
+            List <HistoriqueItem> liste = new List<HistoriqueItem>();
+            using(var connexion = ConnexionBD.GetConnection())
+            {
+                string req = @"SELECT h.id_historique,h.action_realisee,h.date_action,CONCAT(e.nom,' ',e.prenom) AS nom_employe,t.titre AS 
+                                titre_tache FROM HISTORIQUE h LEFT JOIN EMPLOYE e ON h.matricule=e.matricule LEFT JOIN TACHE t ON h.id_tache
+                                 =t.id_tache ORDER BY h.date_action DESC";
+                using (var cmd = new MySqlCommand(req, connexion))
+                {
+                    connexion.Open();
+                    using(var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            liste.Add(new HistoriqueItem
+                            {
+                                IdHistorique = reader.GetInt32("id_historique"),
+                                actionRealisee = reader.GetString("action_realisee"),
+                                DateAction = reader.GetDateTime("date_action"),
+                                Employe = reader.IsDBNull(reader.GetOrdinal("nom_employe")) ? "Inconnu" : reader.GetString("nom_employe"),
+                                Tache = reader.IsDBNull(reader.GetOrdinal("titre_tache")) ? "Non spécifiée" : reader.GetString("titre_tache")
+                            });
+                        }
+                    }
+
+                }
+            }
+            return liste;
         }
     }
 }
