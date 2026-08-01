@@ -39,7 +39,7 @@ namespace GestionTachesAdmin
                 cmbTaches.DisplayMember = "titre";
                 cmbTaches.ValueMember = "Idtache";
 
-                List<HistoriqueItem> historique = attributionDAO.GetHisorique();
+                List<HistoriqueItem> historique = attributionDAO.GetHistorique();
                 dgvHistorique.DataSource = null;
                 dgvHistorique.DataSource = historique;
 

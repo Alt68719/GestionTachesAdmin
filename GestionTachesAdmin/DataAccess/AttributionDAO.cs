@@ -36,9 +36,10 @@ namespace GestionTachesAdmin.DataAccess
             return liste;
         }
 
+        // CORRECTION ICI : On utilise List<Tache> et non List<TacheDAO>
         public List<Tache> GetTacheDispo()
         {
-            List<Tache> liste = new List<Tache>();
+            List<Tache> liste = new List<Tache>(); // CORRECTION ICI
             using (var connexion = ConnexionBD.GetConnection())
             {
                 string req = "SELECT id_tache, titre, statut FROM TACHE WHERE statut = 'À faire'";
@@ -49,6 +50,7 @@ namespace GestionTachesAdmin.DataAccess
                     {
                         while (reader.Read())
                         {
+                            // CORRECTION ICI : new Tache au lieu de new TacheDAO
                             liste.Add(new Tache
                             {
                                 Idtache = reader.GetInt32("id_tache"),
@@ -125,34 +127,33 @@ namespace GestionTachesAdmin.DataAccess
                 }
             }
         }
-    
-    public List<HistoriqueItem> GetHisorique()
 
+        // Correction de la faute de frappe : GetHistorique
+        public List<HistoriqueItem> GetHistorique()
         {
-            List <HistoriqueItem> liste = new List<HistoriqueItem>();
-            using(var connexion = ConnexionBD.GetConnection())
+            List<HistoriqueItem> liste = new List<HistoriqueItem>();
+            using (var connexion = ConnexionBD.GetConnection())
             {
-                string req = @"SELECT h.id_historique,h.action_realisee,h.date_action,CONCAT(e.nom,' ',e.prenom) AS nom_employe,t.titre AS 
+                string req = @"SELECT h.id_historique, h.action_realisee, h.date_action, CONCAT(e.nom,' ',e.prenom) AS nom_employe, t.titre AS 
                                 titre_tache FROM HISTORIQUE h LEFT JOIN EMPLOYE e ON h.matricule=e.matricule LEFT JOIN TACHE t ON h.id_tache
                                  =t.id_tache ORDER BY h.date_action DESC";
                 using (var cmd = new MySqlCommand(req, connexion))
                 {
                     connexion.Open();
-                    using(var reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             liste.Add(new HistoriqueItem
                             {
                                 IdHistorique = reader.GetInt32("id_historique"),
-                                actionRealisee = reader.GetString("action_realisee"),
+                                actionRealisee = reader.GetString("action_realisee"), // Assure-toi que c'est bien ActionRealisee avec un grand A si ton modèle le demande
                                 DateAction = reader.GetDateTime("date_action"),
                                 Employe = reader.IsDBNull(reader.GetOrdinal("nom_employe")) ? "Inconnu" : reader.GetString("nom_employe"),
                                 Tache = reader.IsDBNull(reader.GetOrdinal("titre_tache")) ? "Non spécifiée" : reader.GetString("titre_tache")
                             });
                         }
                     }
-
                 }
             }
             return liste;

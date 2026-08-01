@@ -10,25 +10,27 @@ namespace GestionTachesAdmin.DataAccess
 {
     public class EmployeDAO
     {
-        public bool CreerEmploye(Employe emp)
+        // Le mot-clé 'static' a été ajouté ici
+        public static bool CreerEmploye(string matricule, string nom, string prenom, string poste)
         {
+            bool success = false;
             using (var connexion = ConnexionBD.GetConnection())
             {
-                string requete = "INSERT INTO EMPLOYE(matricule,nom,prenom,poste)" + " VALUES(@matricule,@nom,@prenom,@poste)";
-
+                string requete = "INSERT INTO EMPLOYE(matricule,nom,prenom,poste) VALUES(@matricule,@nom,@prenom,@poste)";
 
                 using (var command = new MySqlCommand(requete, connexion))
                 {
-                    command.Parameters.AddWithValue("@matricule", emp.Matricule);
-                    command.Parameters.AddWithValue("@nom", emp.nom);
-                    command.Parameters.AddWithValue("@prenom", emp.prenom);
-                    command.Parameters.AddWithValue("@poste", emp.poste);
+                    command.Parameters.AddWithValue("@matricule", matricule);
+                    command.Parameters.AddWithValue("@nom", nom);
+                    command.Parameters.AddWithValue("@prenom", prenom);
+                    command.Parameters.AddWithValue("@poste", poste);
 
                     connexion.Open();
                     int ligneaffectes = command.ExecuteNonQuery();
-                    return ligneaffectes > 0;
+                    success = ligneaffectes > 0;
                 }
             }
+            return success;
         }
     }
 }
