@@ -27,11 +27,12 @@ namespace GestionTachesAdmin
             btnOuvrirAttribution = new Button();
             btnOuvrirAvancement = new Button();
             SuspendLayout();
+
             // 
             // lblHeader
             // 
             lblHeader.AutoSize = true;
-            lblHeader.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblHeader.Font = new System.Drawing.Font("Segoe UI", 16F, FontStyle.Bold);
             lblHeader.ForeColor = Color.FromArgb(40, 50, 70);
             lblHeader.Location = new Point(310, 29);
             lblHeader.Name = "lblHeader";
@@ -39,7 +40,7 @@ namespace GestionTachesAdmin
             lblHeader.TabIndex = 0;
             lblHeader.Text = "Menu Principal";
             lblHeader.TextAlign = ContentAlignment.MiddleCenter;
-            lblHeader.Click += lblHeader_Click;
+
             // 
             // btnOuvrirCreation
             // 
@@ -47,7 +48,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreation.Cursor = Cursors.Hand;
             btnOuvrirCreation.FlatAppearance.BorderSize = 0;
             btnOuvrirCreation.FlatStyle = FlatStyle.Flat;
-            btnOuvrirCreation.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnOuvrirCreation.Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirCreation.ForeColor = Color.White;
             btnOuvrirCreation.Location = new Point(246, 86);
             btnOuvrirCreation.Name = "btnOuvrirCreation";
@@ -56,6 +57,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreation.Text = "Création de Nouvelle Tâche";
             btnOuvrirCreation.UseVisualStyleBackColor = false;
             btnOuvrirCreation.Click += btnOuvrirCreation_Click;
+
             // 
             // btnOuvrirCreationEmploye
             // 
@@ -63,7 +65,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreationEmploye.Cursor = Cursors.Hand;
             btnOuvrirCreationEmploye.FlatAppearance.BorderSize = 0;
             btnOuvrirCreationEmploye.FlatStyle = FlatStyle.Flat;
-            btnOuvrirCreationEmploye.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnOuvrirCreationEmploye.Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirCreationEmploye.ForeColor = Color.White;
             btnOuvrirCreationEmploye.Location = new Point(246, 155);
             btnOuvrirCreationEmploye.Name = "btnOuvrirCreationEmploye";
@@ -72,6 +74,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreationEmploye.Text = "Création d'Employé";
             btnOuvrirCreationEmploye.UseVisualStyleBackColor = false;
             btnOuvrirCreationEmploye.Click += btnOuvrirCreationEmploye_Click;
+
             // 
             // btnOuvrirAttribution
             // 
@@ -79,7 +82,7 @@ namespace GestionTachesAdmin
             btnOuvrirAttribution.Cursor = Cursors.Hand;
             btnOuvrirAttribution.FlatAppearance.BorderSize = 0;
             btnOuvrirAttribution.FlatStyle = FlatStyle.Flat;
-            btnOuvrirAttribution.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnOuvrirAttribution.Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirAttribution.ForeColor = Color.White;
             btnOuvrirAttribution.Location = new Point(246, 230);
             btnOuvrirAttribution.Name = "btnOuvrirAttribution";
@@ -88,6 +91,24 @@ namespace GestionTachesAdmin
             btnOuvrirAttribution.Text = "Attribution et Historique";
             btnOuvrirAttribution.UseVisualStyleBackColor = false;
             btnOuvrirAttribution.Click += btnOuvrirAttribution_Click;
+
+            // 
+            // btnOuvrirAvancement
+            // 
+            btnOuvrirAvancement.BackColor = Color.FromArgb(0, 122, 204);
+            btnOuvrirAvancement.Cursor = Cursors.Hand;
+            btnOuvrirAvancement.FlatAppearance.BorderSize = 0;
+            btnOuvrirAvancement.FlatStyle = FlatStyle.Flat;
+            btnOuvrirAvancement.Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold);
+            btnOuvrirAvancement.ForeColor = Color.White;
+            btnOuvrirAvancement.Location = new Point(246, 305);
+            btnOuvrirAvancement.Name = "btnOuvrirAvancement";
+            btnOuvrirAvancement.Size = new Size(350, 50);
+            btnOuvrirAvancement.TabIndex = 4;
+            btnOuvrirAvancement.Text = "Avancements des tâches";
+            btnOuvrirAvancement.UseVisualStyleBackColor = false;
+            btnOuvrirAvancement.Click += btnOuvrirAvancement_Click;
+
             // 
             // btnOuvrirAvancement
             // 
@@ -113,6 +134,7 @@ namespace GestionTachesAdmin
             ClientSize = new Size(875, 485);
             Controls.Add(btnOuvrirAvancement);
             Controls.Add(lblHeader);
+            Controls.Add(btnOuvrirAvancement);
             Controls.Add(btnOuvrirAttribution);
             Controls.Add(btnOuvrirCreationEmploye);
             Controls.Add(btnOuvrirCreation);
