@@ -110,12 +110,29 @@ namespace GestionTachesAdmin
             btnOuvrirAvancement.Click += btnOuvrirAvancement_Click;
 
             // 
+            // btnOuvrirAvancement
+            // 
+            btnOuvrirAvancement.BackColor = Color.FromArgb(0, 122, 204);
+            btnOuvrirAvancement.Cursor = Cursors.Hand;
+            btnOuvrirAvancement.FlatAppearance.BorderSize = 0;
+            btnOuvrirAvancement.FlatStyle = FlatStyle.Flat;
+            btnOuvrirAvancement.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnOuvrirAvancement.ForeColor = Color.White;
+            btnOuvrirAvancement.Location = new Point(246, 305);
+            btnOuvrirAvancement.Name = "btnOuvrirAvancement";
+            btnOuvrirAvancement.Size = new Size(350, 50);
+            btnOuvrirAvancement.TabIndex = 4;
+            btnOuvrirAvancement.Text = "Avancement des Tâche";
+            btnOuvrirAvancement.UseVisualStyleBackColor = false;
+            btnOuvrirAvancement.Click += btnOuvrirAvancement_Click;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(875, 485);
+            Controls.Add(btnOuvrirAvancement);
             Controls.Add(lblHeader);
             Controls.Add(btnOuvrirAvancement);
             Controls.Add(btnOuvrirAttribution);
