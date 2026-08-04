@@ -34,5 +34,16 @@ namespace GestionTachesAdmin
             FormCreationEmploye FormCreationEmploye = new FormCreationEmploye();
             FormCreationEmploye.Show();
         }
+
+        private void lblHeader_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOuvrirAvancement_Click(object sender, EventArgs e)
+        {
+            FormAvancement FormAvancement = new FormAvancement();
+            FormAvancement.Show();
+        }
     }
 }
