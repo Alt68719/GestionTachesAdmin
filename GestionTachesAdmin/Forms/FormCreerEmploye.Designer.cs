@@ -1,9 +1,7 @@
-﻿using Org.BouncyCastle.Asn1.Crmf;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace GestionTachesAdmin
 {
@@ -35,145 +33,212 @@ namespace GestionTachesAdmin
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitre = new System.Windows.Forms.Label();
-            this.lblMatricule = new System.Windows.Forms.Label();
-            this.txtMatricule = new System.Windows.Forms.TextBox();
-            this.lblNom = new System.Windows.Forms.Label();
-            this.txtNom = new System.Windows.Forms.TextBox();
-            this.lblPrenom = new System.Windows.Forms.Label();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
-            this.lblPoste = new System.Windows.Forms.Label();
-            this.txtPoste = new System.Windows.Forms.TextBox();
-            this.lblMotDePasse = new System.Windows.Forms.Label();
-            this.txtMotDePasse = new System.Windows.Forms.TextBox();
-            this.btnEnregistrer = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lblTitre = new Label();
+            lblMatricule = new Label();
+            txtMatricule = new TextBox();
+            lblNom = new Label();
+            txtNom = new TextBox();
+            lblPrenom = new Label();
+            txtPrenom = new TextBox();
+            lblPoste = new Label();
+            txtPoste = new TextBox();
+            lblMotDePasse = new Label();
+            txtMotDePasse = new TextBox();
+            btnEnregistrer = new Button();
+            dataGridViewEmployes = new DataGridView();
+            label1 = new Label();
+            btnSupprimer = new Button();
+            btnUpdate = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployes).BeginInit();
+            SuspendLayout();
             // 
             // lblTitre
             // 
-            this.lblTitre.AutoSize = true;
-            this.lblTitre.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitre.Location = new System.Drawing.Point(80, 20);
-            this.lblTitre.Name = "lblTitre";
-            this.lblTitre.Size = new System.Drawing.Size(200, 25);
-            this.lblTitre.TabIndex = 0;
-            this.lblTitre.Text = "Création d'un Employé";
+            lblTitre.AutoSize = true;
+            lblTitre.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblTitre.Location = new Point(106, 9);
+            lblTitre.Margin = new Padding(4, 0, 4, 0);
+            lblTitre.Name = "lblTitre";
+            lblTitre.Size = new Size(275, 32);
+            lblTitre.TabIndex = 0;
+            lblTitre.Text = "Création d'un Employé";
             // 
             // lblMatricule
             // 
-            this.lblMatricule.AutoSize = true;
-            this.lblMatricule.Location = new System.Drawing.Point(40, 80);
-            this.lblMatricule.Name = "lblMatricule";
-            this.lblMatricule.Size = new System.Drawing.Size(56, 13);
-            this.lblMatricule.TabIndex = 1;
-            this.lblMatricule.Text = "Matricule :";
+            lblMatricule.AutoSize = true;
+            lblMatricule.Location = new Point(53, 123);
+            lblMatricule.Margin = new Padding(4, 0, 4, 0);
+            lblMatricule.Name = "lblMatricule";
+            lblMatricule.Size = new Size(78, 20);
+            lblMatricule.TabIndex = 1;
+            lblMatricule.Text = "Matricule :";
             // 
             // txtMatricule
             // 
-            this.txtMatricule.Location = new System.Drawing.Point(130, 77);
-            this.txtMatricule.Name = "txtMatricule";
-            this.txtMatricule.Size = new System.Drawing.Size(200, 20);
-            this.txtMatricule.TabIndex = 2;
+            txtMatricule.Location = new Point(173, 118);
+            txtMatricule.Margin = new Padding(4, 5, 4, 5);
+            txtMatricule.Name = "txtMatricule";
+            txtMatricule.Size = new Size(247, 27);
+            txtMatricule.TabIndex = 2;
             // 
             // lblNom
             // 
-            this.lblNom.AutoSize = true;
-            this.lblNom.Location = new System.Drawing.Point(40, 120);
-            this.lblNom.Name = "lblNom";
-            this.lblNom.Size = new System.Drawing.Size(35, 13);
-            this.lblNom.TabIndex = 3;
-            this.lblNom.Text = "Nom :";
+            lblNom.AutoSize = true;
+            lblNom.Location = new Point(53, 185);
+            lblNom.Margin = new Padding(4, 0, 4, 0);
+            lblNom.Name = "lblNom";
+            lblNom.Size = new Size(49, 20);
+            lblNom.TabIndex = 3;
+            lblNom.Text = "Nom :";
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(130, 117);
-            this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(200, 20);
-            this.txtNom.TabIndex = 4;
+            txtNom.Location = new Point(173, 180);
+            txtNom.Margin = new Padding(4, 5, 4, 5);
+            txtNom.Name = "txtNom";
+            txtNom.Size = new Size(247, 27);
+            txtNom.TabIndex = 4;
             // 
             // lblPrenom
             // 
-            this.lblPrenom.AutoSize = true;
-            this.lblPrenom.Location = new System.Drawing.Point(40, 160);
-            this.lblPrenom.Name = "lblPrenom";
-            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
-            this.lblPrenom.TabIndex = 5;
-            this.lblPrenom.Text = "Prénom :";
+            lblPrenom.AutoSize = true;
+            lblPrenom.Location = new Point(53, 246);
+            lblPrenom.Margin = new Padding(4, 0, 4, 0);
+            lblPrenom.Name = "lblPrenom";
+            lblPrenom.Size = new Size(67, 20);
+            lblPrenom.TabIndex = 5;
+            lblPrenom.Text = "Prénom :";
             // 
             // txtPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(130, 157);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(200, 20);
-            this.txtPrenom.TabIndex = 6;
+            txtPrenom.Location = new Point(173, 242);
+            txtPrenom.Margin = new Padding(4, 5, 4, 5);
+            txtPrenom.Name = "txtPrenom";
+            txtPrenom.Size = new Size(247, 27);
+            txtPrenom.TabIndex = 6;
             // 
             // lblPoste
             // 
-            this.lblPoste.AutoSize = true;
-            this.lblPoste.Location = new System.Drawing.Point(40, 200);
-            this.lblPoste.Name = "lblPoste";
-            this.lblPoste.Size = new System.Drawing.Size(40, 13);
-            this.lblPoste.TabIndex = 7;
-            this.lblPoste.Text = "Poste :";
+            lblPoste.AutoSize = true;
+            lblPoste.Location = new Point(53, 308);
+            lblPoste.Margin = new Padding(4, 0, 4, 0);
+            lblPoste.Name = "lblPoste";
+            lblPoste.Size = new Size(51, 20);
+            lblPoste.TabIndex = 7;
+            lblPoste.Text = "Poste :";
             // 
             // txtPoste
             // 
-            this.txtPoste.Location = new System.Drawing.Point(130, 197);
-            this.txtPoste.Name = "txtPoste";
-            this.txtPoste.Size = new System.Drawing.Size(200, 20);
-            this.txtPoste.TabIndex = 8;
+            txtPoste.Location = new Point(173, 303);
+            txtPoste.Margin = new Padding(4, 5, 4, 5);
+            txtPoste.Name = "txtPoste";
+            txtPoste.Size = new Size(247, 27);
+            txtPoste.TabIndex = 8;
             // 
             // lblMotDePasse
             // 
-            this.lblMotDePasse.AutoSize = true;
-            this.lblMotDePasse.Location = new System.Drawing.Point(40, 240);
-            this.lblMotDePasse.Name = "lblMotDePasse";
-            this.lblMotDePasse.Size = new System.Drawing.Size(77, 13);
-            this.lblMotDePasse.TabIndex = 9;
-            this.lblMotDePasse.Text = "Mot de passe :";
+            lblMotDePasse.AutoSize = true;
+            lblMotDePasse.Location = new Point(53, 369);
+            lblMotDePasse.Margin = new Padding(4, 0, 4, 0);
+            lblMotDePasse.Name = "lblMotDePasse";
+            lblMotDePasse.Size = new Size(105, 20);
+            lblMotDePasse.TabIndex = 9;
+            lblMotDePasse.Text = "Mot de passe :";
             // 
             // txtMotDePasse
             // 
-            this.txtMotDePasse.Location = new System.Drawing.Point(130, 237);
-            this.txtMotDePasse.Name = "txtMotDePasse";
-            this.txtMotDePasse.Size = new System.Drawing.Size(200, 20);
-            this.txtMotDePasse.TabIndex = 10;
-            // IMPORTANT : Cette propriété masque la saisie (remplace par des points)
-            this.txtMotDePasse.UseSystemPasswordChar = true;
+            txtMotDePasse.Location = new Point(173, 365);
+            txtMotDePasse.Margin = new Padding(4, 5, 4, 5);
+            txtMotDePasse.Name = "txtMotDePasse";
+            txtMotDePasse.Size = new Size(247, 27);
+            txtMotDePasse.TabIndex = 10;
+            txtMotDePasse.UseSystemPasswordChar = true;
             // 
             // btnEnregistrer
             // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(130, 280);
-            this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(120, 35);
-            this.btnEnregistrer.TabIndex = 11;
-            this.btnEnregistrer.Text = "Enregistrer";
-            this.btnEnregistrer.UseVisualStyleBackColor = true;
-            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
+            btnEnregistrer.Location = new Point(173, 431);
+            btnEnregistrer.Margin = new Padding(4, 5, 4, 5);
+            btnEnregistrer.Name = "btnEnregistrer";
+            btnEnregistrer.Size = new Size(160, 54);
+            btnEnregistrer.TabIndex = 11;
+            btnEnregistrer.Text = "Enregistrer";
+            btnEnregistrer.UseVisualStyleBackColor = true;
+            btnEnregistrer.Click += btnEnregistrer_Click;
+            // 
+            // dataGridViewEmployes
+            // 
+            dataGridViewEmployes.AllowUserToAddRows = false;
+            dataGridViewEmployes.AllowUserToDeleteRows = false;
+            dataGridViewEmployes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewEmployes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewEmployes.Location = new Point(447, 24);
+            dataGridViewEmployes.Name = "dataGridViewEmployes";
+            dataGridViewEmployes.RowHeadersVisible = false;
+            dataGridViewEmployes.RowHeadersWidth = 51;
+            dataGridViewEmployes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewEmployes.Size = new Size(552, 428);
+            dataGridViewEmployes.TabIndex = 12;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(630, -4);
+            label1.Name = "label1";
+            label1.Size = new Size(171, 25);
+            label1.TabIndex = 13;
+            label1.Text = "Liste des Employés";
+            // 
+            // btnSupprimer
+            // 
+            btnSupprimer.BackColor = SystemColors.ControlLight;
+            btnSupprimer.Location = new Point(578, 474);
+            btnSupprimer.Name = "btnSupprimer";
+            btnSupprimer.Size = new Size(94, 29);
+            btnSupprimer.TabIndex = 14;
+            btnSupprimer.Text = "Supprimer";
+            btnSupprimer.UseVisualStyleBackColor = false;
+            btnSupprimer.Click += btnSupprimer_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = SystemColors.ControlLight;
+            btnUpdate.Location = new Point(782, 474);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(94, 29);
+            btnUpdate.TabIndex = 15;
+            btnUpdate.Text = "Modifier";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // FormCreationEmploye
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 350);
-            this.Controls.Add(this.btnEnregistrer);
-            this.Controls.Add(this.txtMotDePasse);
-            this.Controls.Add(this.lblMotDePasse);
-            this.Controls.Add(this.txtPoste);
-            this.Controls.Add(this.lblPoste);
-            this.Controls.Add(this.txtPrenom);
-            this.Controls.Add(this.lblPrenom);
-            this.Controls.Add(this.txtNom);
-            this.Controls.Add(this.lblNom);
-            this.Controls.Add(this.txtMatricule);
-            this.Controls.Add(this.lblMatricule);
-            this.Controls.Add(this.lblTitre);
-            this.Name = "FormCreationEmploye";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ajouter un employé";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1011, 538);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnSupprimer);
+            Controls.Add(label1);
+            Controls.Add(dataGridViewEmployes);
+            Controls.Add(btnEnregistrer);
+            Controls.Add(txtMotDePasse);
+            Controls.Add(lblMotDePasse);
+            Controls.Add(txtPoste);
+            Controls.Add(lblPoste);
+            Controls.Add(txtPrenom);
+            Controls.Add(lblPrenom);
+            Controls.Add(txtNom);
+            Controls.Add(lblNom);
+            Controls.Add(txtMatricule);
+            Controls.Add(lblMatricule);
+            Controls.Add(lblTitre);
+            Margin = new Padding(4, 5, 4, 5);
+            Name = "FormCreationEmploye";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Ajouter un employé";
+            ((System.ComponentModel.ISupportInitialize)dataGridViewEmployes).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -190,5 +255,10 @@ namespace GestionTachesAdmin
         private System.Windows.Forms.Label lblMotDePasse;
         private System.Windows.Forms.TextBox txtMotDePasse;
         private System.Windows.Forms.Button btnEnregistrer;
+        private DataGridView dataGridViewEmployes;
+        private Label label1;
+        
+        private Button btnSupprimer;
+        private Button btnUpdate;
     }
 }
