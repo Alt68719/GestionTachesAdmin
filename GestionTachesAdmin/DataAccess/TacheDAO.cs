@@ -1,5 +1,6 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
+using System.Data;
 
 namespace GestionTachesAdmin.DataAccess
 {
@@ -38,9 +39,61 @@ namespace GestionTachesAdmin.DataAccess
             return success;
         }
 
-        internal bool AjouterTache(string titre, string description, object priorite, DateTime dateLimite)
+        public DataTable ListerTache()
         {
-            throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            using (var connexion = ConnexionBD.GetConnection())
+            {
+                string req = "SELECT id_tache AS 'ID', titre AS 'Titre', description AS 'Description', priorite AS 'Priorite', date_limite AS 'DateLimite', statut AS 'Statut' FROM TACHE ORDER BY date_creation";
+                using (var cmd = new MySqlCommand(req, connexion))
+                {
+                    connexion.Open();
+                    using (var adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            return dt;
+        }
+        public bool SupprimerTache(string idTache)
+        {
+            bool success = false;
+            using (var connexion = ConnexionBD.GetConnection())
+            {
+                string req = "DELETE FROM TACHE WHERE id_tache=@id_tache";
+                using (var cmd = new MySqlCommand(req, connexion))
+                {
+                    cmd.Parameters.AddWithValue("@id_tache", idTache);
+                    connexion.Open();
+                    int ligneaffectes = cmd.ExecuteNonQuery();
+                    success = (ligneaffectes > 0);
+                }
+            }
+            return success;
+        }
+        public bool ModifierTache(int id, string titre, string description, DateTime date_creation, string priorite)
+        {
+            bool success = false;
+            using (var connexion = ConnexionBD.GetConnection())
+            {
+
+                string req = "UPDATE TACHE SET titre=@titre, description=@description, date_limite=@date_creation, priorite=@priorite WHERE id_tache=@id_tache";
+                using (var cmd = new MySqlCommand(req, connexion))
+                {
+                    cmd.Parameters.AddWithValue("@titre",titre );
+                    cmd.Parameters.AddWithValue("@description", description);
+                    cmd.Parameters.AddWithValue("@date_creation", date_creation);
+                    cmd.Parameters.AddWithValue("@priorite", priorite);
+                   
+                    cmd.Parameters.AddWithValue("@id_tache", id);
+
+                    connexion.Open();
+                    int ligneaffectes = cmd.ExecuteNonQuery();
+                    success = (ligneaffectes > 0);
+                }
+            }
+            return success;
         }
     }
 }
