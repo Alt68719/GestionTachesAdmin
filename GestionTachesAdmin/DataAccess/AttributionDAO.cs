@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+﻿using GestionTachesAdmin.Forms.Models;
 using GestionTachesAdmin.Models;
-using GestionTachesAdmin.Forms.Models;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 
 namespace GestionTachesAdmin.DataAccess
 {
@@ -25,9 +25,9 @@ namespace GestionTachesAdmin.DataAccess
                             liste.Add(new Employe
                             {
                                 Matricule = reader.GetString("matricule"),
-                                nom = reader.GetString("nom"),
-                                prenom = reader.GetString("prenom"),
-                                poste = reader.GetString("poste")
+                                Nom = reader.GetString("nom"),       
+                                Prenom = reader.GetString("prenom"), 
+                                Poste = reader.GetString("poste")    
                             });
                         }
                     }
@@ -36,10 +36,9 @@ namespace GestionTachesAdmin.DataAccess
             return liste;
         }
 
-        // CORRECTION ICI : On utilise List<Tache> et non List<TacheDAO>
         public List<Tache> GetTacheDispo()
         {
-            List<Tache> liste = new List<Tache>(); // CORRECTION ICI
+            List<Tache> liste = new List<Tache>();
             using (var connexion = ConnexionBD.GetConnection())
             {
                 string req = "SELECT id_tache, titre, statut FROM TACHE WHERE statut = 'À faire'";
@@ -50,12 +49,11 @@ namespace GestionTachesAdmin.DataAccess
                     {
                         while (reader.Read())
                         {
-                            // CORRECTION ICI : new Tache au lieu de new TacheDAO
                             liste.Add(new Tache
                             {
                                 Idtache = reader.GetInt32("id_tache"),
-                                titre = reader.GetString("titre"),
-                                status = reader.GetString("statut")
+                                titre = reader.GetString("titre"),   
+                                status = reader.GetString("statut")  
                             });
                         }
                     }
@@ -128,7 +126,6 @@ namespace GestionTachesAdmin.DataAccess
             }
         }
 
-        // Correction de la faute de frappe : GetHistorique
         public List<HistoriqueItem> GetHistorique()
         {
             List<HistoriqueItem> liste = new List<HistoriqueItem>();
@@ -147,7 +144,7 @@ namespace GestionTachesAdmin.DataAccess
                             liste.Add(new HistoriqueItem
                             {
                                 IdHistorique = reader.GetInt32("id_historique"),
-                                actionRealisee = reader.GetString("action_realisee"), // Assure-toi que c'est bien ActionRealisee avec un grand A si ton modèle le demande
+                                actionRealisee = reader.GetString("action_realisee"), 
                                 DateAction = reader.GetDateTime("date_action"),
                                 Employe = reader.IsDBNull(reader.GetOrdinal("nom_employe")) ? "Inconnu" : reader.GetString("nom_employe"),
                                 Tache = reader.IsDBNull(reader.GetOrdinal("titre_tache")) ? "Non spécifiée" : reader.GetString("titre_tache")

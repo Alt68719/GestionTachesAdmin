@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionTachesAdmin.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,17 @@ namespace GestionTachesAdmin
         {
             FormAvancement FormAvancement = new FormAvancement();
             FormAvancement.Show();
+        }
+
+        private void lblHeader_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCommentaires_Click(object sender, EventArgs e)
+        {
+            FormCommentaire formCommentaire = new FormCommentaire();
+            formCommentaire.Show();
         }
     }
 }

@@ -9,8 +9,15 @@ namespace GestionTachesAdmin
 {
     partial class FormCreationEmploye
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,166 +29,166 @@ namespace GestionTachesAdmin
 
         #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            lblHeader = new Label();
-            lblMatricule = new Label();
-            txtMatricule = new TextBox();
-            lblNom = new Label();
-            txtNom = new TextBox();
-            lblPrenom = new Label();
-            txtPrenom = new TextBox();
-            lblPoste = new Label();
-            txtPoste = new TextBox();
-            btnEnregistrer = new Button();
-            SuspendLayout();
-
+            this.lblTitre = new System.Windows.Forms.Label();
+            this.lblMatricule = new System.Windows.Forms.Label();
+            this.txtMatricule = new System.Windows.Forms.TextBox();
+            this.lblNom = new System.Windows.Forms.Label();
+            this.txtNom = new System.Windows.Forms.TextBox();
+            this.lblPrenom = new System.Windows.Forms.Label();
+            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.lblPoste = new System.Windows.Forms.Label();
+            this.txtPoste = new System.Windows.Forms.TextBox();
+            this.lblMotDePasse = new System.Windows.Forms.Label();
+            this.txtMotDePasse = new System.Windows.Forms.TextBox();
+            this.btnEnregistrer = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
-            // lblHeader
+            // lblTitre
             // 
-            lblHeader.AutoSize = true;
-            lblHeader.Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold);
-            lblHeader.ForeColor = Color.FromArgb(40, 50, 70);
-            lblHeader.Location = new Point(25, 20);
-            lblHeader.Name = "lblHeader";
-            lblHeader.Size = new Size(313, 32);
-            lblHeader.TabIndex = 0;
-            lblHeader.Text = "Créer un Nouvel Employé";
-
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitre.Location = new System.Drawing.Point(80, 20);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(200, 25);
+            this.lblTitre.TabIndex = 0;
+            this.lblTitre.Text = "Création d'un Employé";
             // 
             // lblMatricule
             // 
-            lblMatricule.AutoSize = true;
-            lblMatricule.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblMatricule.Location = new Point(25, 75);
-            lblMatricule.Name = "lblMatricule";
-            lblMatricule.Size = new Size(93, 23);
-            lblMatricule.TabIndex = 1;
-            lblMatricule.Text = "Matricule :";
-
+            this.lblMatricule.AutoSize = true;
+            this.lblMatricule.Location = new System.Drawing.Point(40, 80);
+            this.lblMatricule.Name = "lblMatricule";
+            this.lblMatricule.Size = new System.Drawing.Size(56, 13);
+            this.lblMatricule.TabIndex = 1;
+            this.lblMatricule.Text = "Matricule :";
             // 
             // txtMatricule
             // 
-            txtMatricule.Font = new System.Drawing.Font("Segoe UI", 10F);
-            txtMatricule.Location = new Point(25, 102);
-            txtMatricule.Name = "txtMatricule";
-            txtMatricule.Size = new Size(430, 30);
-            txtMatricule.TabIndex = 2;
-
+            this.txtMatricule.Location = new System.Drawing.Point(130, 77);
+            this.txtMatricule.Name = "txtMatricule";
+            this.txtMatricule.Size = new System.Drawing.Size(200, 20);
+            this.txtMatricule.TabIndex = 2;
             // 
             // lblNom
             // 
-            lblNom.AutoSize = true;
-            lblNom.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblNom.Location = new Point(25, 150);
-            lblNom.Name = "lblNom";
-            lblNom.Size = new Size(57, 23);
-            lblNom.TabIndex = 3;
-            lblNom.Text = "Nom :";
-
+            this.lblNom.AutoSize = true;
+            this.lblNom.Location = new System.Drawing.Point(40, 120);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(35, 13);
+            this.lblNom.TabIndex = 3;
+            this.lblNom.Text = "Nom :";
             // 
             // txtNom
             // 
-            txtNom.Font = new System.Drawing.Font("Segoe UI", 10F);
-            txtNom.Location = new Point(25, 177);
-            txtNom.Name = "txtNom";
-            txtNom.Size = new Size(430, 30);
-            txtNom.TabIndex = 4;
-
+            this.txtNom.Location = new System.Drawing.Point(130, 117);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(200, 20);
+            this.txtNom.TabIndex = 4;
             // 
             // lblPrenom
             // 
-            lblPrenom.AutoSize = true;
-            lblPrenom.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblPrenom.Location = new Point(25, 225);
-            lblPrenom.Name = "lblPrenom";
-            lblPrenom.Size = new Size(79, 23);
-            lblPrenom.TabIndex = 5;
-            lblPrenom.Text = "Prénom :";
-
+            this.lblPrenom.AutoSize = true;
+            this.lblPrenom.Location = new System.Drawing.Point(40, 160);
+            this.lblPrenom.Name = "lblPrenom";
+            this.lblPrenom.Size = new System.Drawing.Size(49, 13);
+            this.lblPrenom.TabIndex = 5;
+            this.lblPrenom.Text = "Prénom :";
             // 
             // txtPrenom
             // 
-            txtPrenom.Font = new System.Drawing.Font("Segoe UI", 10F);
-            txtPrenom.Location = new Point(25, 252);
-            txtPrenom.Name = "txtPrenom";
-            txtPrenom.Size = new Size(430, 30);
-            txtPrenom.TabIndex = 6;
-
+            this.txtPrenom.Location = new System.Drawing.Point(130, 157);
+            this.txtPrenom.Name = "txtPrenom";
+            this.txtPrenom.Size = new System.Drawing.Size(200, 20);
+            this.txtPrenom.TabIndex = 6;
             // 
             // lblPoste
             // 
-            lblPoste.AutoSize = true;
-            lblPoste.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, FontStyle.Bold);
-            lblPoste.Location = new Point(25, 300);
-            lblPoste.Name = "lblPoste";
-            lblPoste.Size = new Size(61, 23);
-            lblPoste.TabIndex = 7;
-            lblPoste.Text = "Poste :";
-
+            this.lblPoste.AutoSize = true;
+            this.lblPoste.Location = new System.Drawing.Point(40, 200);
+            this.lblPoste.Name = "lblPoste";
+            this.lblPoste.Size = new System.Drawing.Size(40, 13);
+            this.lblPoste.TabIndex = 7;
+            this.lblPoste.Text = "Poste :";
             // 
             // txtPoste
             // 
-            txtPoste.Font = new System.Drawing.Font("Segoe UI", 10F);
-            txtPoste.Location = new Point(25, 327);
-            txtPoste.Name = "txtPoste";
-            txtPoste.Size = new Size(430, 30);
-            txtPoste.TabIndex = 8;
-
+            this.txtPoste.Location = new System.Drawing.Point(130, 197);
+            this.txtPoste.Name = "txtPoste";
+            this.txtPoste.Size = new System.Drawing.Size(200, 20);
+            this.txtPoste.TabIndex = 8;
+            // 
+            // lblMotDePasse
+            // 
+            this.lblMotDePasse.AutoSize = true;
+            this.lblMotDePasse.Location = new System.Drawing.Point(40, 240);
+            this.lblMotDePasse.Name = "lblMotDePasse";
+            this.lblMotDePasse.Size = new System.Drawing.Size(77, 13);
+            this.lblMotDePasse.TabIndex = 9;
+            this.lblMotDePasse.Text = "Mot de passe :";
+            // 
+            // txtMotDePasse
+            // 
+            this.txtMotDePasse.Location = new System.Drawing.Point(130, 237);
+            this.txtMotDePasse.Name = "txtMotDePasse";
+            this.txtMotDePasse.Size = new System.Drawing.Size(200, 20);
+            this.txtMotDePasse.TabIndex = 10;
+            // IMPORTANT : Cette propriété masque la saisie (remplace par des points)
+            this.txtMotDePasse.UseSystemPasswordChar = true;
             // 
             // btnEnregistrer
             // 
-            btnEnregistrer.BackColor = Color.FromArgb(40, 167, 69);
-            btnEnregistrer.Cursor = Cursors.Hand;
-            btnEnregistrer.FlatAppearance.BorderSize = 0;
-            btnEnregistrer.FlatStyle = FlatStyle.Flat;
-            btnEnregistrer.Font = new System.Drawing.Font("Segoe UI", 11F, FontStyle.Bold);
-            btnEnregistrer.ForeColor = Color.White;
-            btnEnregistrer.Location = new Point(25, 390);
-            btnEnregistrer.Name = "btnEnregistrer";
-            btnEnregistrer.Size = new Size(430, 45);
-            btnEnregistrer.TabIndex = 9;
-            btnEnregistrer.Text = "Enregistrer l'Employé";
-            btnEnregistrer.UseVisualStyleBackColor = false;
-            btnEnregistrer.Click += btnEnregistrer_Click;
-
+            this.btnEnregistrer.Location = new System.Drawing.Point(130, 280);
+            this.btnEnregistrer.Name = "btnEnregistrer";
+            this.btnEnregistrer.Size = new System.Drawing.Size(120, 35);
+            this.btnEnregistrer.TabIndex = 11;
+            this.btnEnregistrer.Text = "Enregistrer";
+            this.btnEnregistrer.UseVisualStyleBackColor = true;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // FormCreationEmploye
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(245, 247, 250);
-            ClientSize = new Size(482, 465);
-            Controls.Add(btnEnregistrer);
-            Controls.Add(txtPoste);
-            Controls.Add(lblPoste);
-            Controls.Add(txtPrenom);
-            Controls.Add(lblPrenom);
-            Controls.Add(txtNom);
-            Controls.Add(lblNom);
-            Controls.Add(txtMatricule);
-            Controls.Add(lblMatricule);
-            Controls.Add(lblHeader);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            Name = "FormCreationEmploye";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Création d'Employé";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(380, 350);
+            this.Controls.Add(this.btnEnregistrer);
+            this.Controls.Add(this.txtMotDePasse);
+            this.Controls.Add(this.lblMotDePasse);
+            this.Controls.Add(this.txtPoste);
+            this.Controls.Add(this.lblPoste);
+            this.Controls.Add(this.txtPrenom);
+            this.Controls.Add(this.lblPrenom);
+            this.Controls.Add(this.txtNom);
+            this.Controls.Add(this.lblNom);
+            this.Controls.Add(this.txtMatricule);
+            this.Controls.Add(this.lblMatricule);
+            this.Controls.Add(this.lblTitre);
+            this.Name = "FormCreationEmploye";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ajouter un employé";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
-        private Label lblHeader;
-        private Label lblMatricule;
-        private TextBox txtMatricule;
-        private Label lblNom;
-        private TextBox txtNom;
-        private Label lblPrenom;
-        private TextBox txtPrenom;
-        private Label lblPoste;
-        private TextBox txtPoste;
-        private Button btnEnregistrer;
+        private System.Windows.Forms.Label lblTitre;
+        private System.Windows.Forms.Label lblMatricule;
+        private System.Windows.Forms.TextBox txtMatricule;
+        private System.Windows.Forms.Label lblNom;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Label lblPrenom;
+        private System.Windows.Forms.TextBox txtPrenom;
+        private System.Windows.Forms.Label lblPoste;
+        private System.Windows.Forms.TextBox txtPoste;
+        private System.Windows.Forms.Label lblMotDePasse;
+        private System.Windows.Forms.TextBox txtMotDePasse;
+        private System.Windows.Forms.Button btnEnregistrer;
     }
 }

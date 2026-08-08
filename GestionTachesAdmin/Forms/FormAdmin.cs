@@ -110,6 +110,10 @@ namespace GestionTachesAdmin
                 MessageBox.Show("Erreur lors de l'attribution de la tâche : " + ex.Message);
             }
         }
+        private void FormAdmin_FormClosed(object sender,FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
 
     }
 }

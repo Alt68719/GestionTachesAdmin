@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using GestionTachesAdmin.DataAccess;
 
-namespace GestionTachesAdmin // Le namespace est maintenant identique
+namespace GestionTachesAdmin
 {
-    public partial class FormCreationEmploye : Form // Le nom est maintenant identique
+    public partial class FormCreationEmploye : Form
     {
         public FormCreationEmploye()
         {
@@ -18,15 +18,21 @@ namespace GestionTachesAdmin // Le namespace est maintenant identique
             string prenom = txtPrenom.Text.Trim();
             string poste = txtPoste.Text.Trim();
 
-            if (string.IsNullOrEmpty(matricule) || string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(poste))
+            // Récupération de la saisie du mot de passe
+            string motDePasse = txtMotDePasse.Text.Trim();
+
+            // Ajout de la vérification pour le mot de passe
+            if (string.IsNullOrEmpty(matricule) || string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(prenom) || string.IsNullOrEmpty(poste) || string.IsNullOrEmpty(motDePasse))
             {
-                MessageBox.Show("Un champ est vide", "Champ requis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Un ou plusieurs champs sont vides.", "Champ requis", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                bool success = EmployeDAO.CreerEmploye(matricule, nom, prenom, poste);
+                // Appel du DAO avec le 5ème paramètre
+                bool success = EmployeDAO.CreerEmploye(matricule, nom, prenom, poste, motDePasse);
+
                 if (success)
                 {
                     MessageBox.Show("Employé créé avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -34,6 +40,7 @@ namespace GestionTachesAdmin // Le namespace est maintenant identique
                     txtNom.Clear();
                     txtPrenom.Clear();
                     txtPoste.Clear();
+                    txtMotDePasse.Clear(); // On vide aussi ce champ
                 }
             }
             catch (Exception ex)

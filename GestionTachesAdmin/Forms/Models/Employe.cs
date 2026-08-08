@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GestionTachesAdmin.Models
+﻿namespace GestionTachesAdmin.Models
 {
     public class Employe
     {
-        public string Matricule {  get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
-        public string poste { get; set; }
-        public string NomComplet => $"{nom} {prenom} ( {Matricule} )";
-
+        public string Matricule { get; set; }
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Poste { get; set; }
+        public string MotDePasse { get; set; } // Nouvel attribut ajouté
+        public string NomComplet => $"{Nom} {Prenom} ({Matricule})";
     }
 }

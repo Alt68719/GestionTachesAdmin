@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using GestionTachesAdmin.Models;
+﻿using MySql.Data.MySqlClient;
 
 namespace GestionTachesAdmin.DataAccess
 {
     public class EmployeDAO
     {
-        // Le mot-clé 'static' a été ajouté ici
-        public static bool CreerEmploye(string matricule, string nom, string prenom, string poste)
+        // Ajout du paramètre "motDePasse" dans la signature
+        public static bool CreerEmploye(string matricule, string nom, string prenom, string poste, string motDePasse)
         {
             bool success = false;
             using (var connexion = ConnexionBD.GetConnection())
             {
-                string requete = "INSERT INTO EMPLOYE(matricule,nom,prenom,poste) VALUES(@matricule,@nom,@prenom,@poste)";
+                // Ajout de la colonne mot_de_passe et de son paramètre @motDePasse
+                string requete = "INSERT INTO EMPLOYE(matricule, nom, prenom, poste, mot_de_passe) VALUES(@matricule, @nom, @prenom, @poste, @motDePasse)";
 
                 using (var command = new MySqlCommand(requete, connexion))
                 {
@@ -24,6 +19,7 @@ namespace GestionTachesAdmin.DataAccess
                     command.Parameters.AddWithValue("@nom", nom);
                     command.Parameters.AddWithValue("@prenom", prenom);
                     command.Parameters.AddWithValue("@poste", poste);
+                    command.Parameters.AddWithValue("@motDePasse", motDePasse); 
 
                     connexion.Open();
                     int ligneaffectes = command.ExecuteNonQuery();

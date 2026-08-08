@@ -13,12 +13,12 @@ namespace GestionTachesAdmin.DataAccess
     {
         public static List<Avancement> GetAvancement()
         {
-            List<Avancement> liste=new List<Avancement>();
+            List<Avancement> liste = new List<Avancement>();
             using (var connexion = ConnexionBD.GetConnection())
             {
                 string req = @"SELECT e.nom,e.prenom,t.titre,t.statut FROM ATTRIBUTION a INNER JOIN EMPLOYE e ON a.matricule=e.matricule "
                                + "INNER JOIN TACHE t ON a.id_tache = t.id_tache";
-                using(var cmd =new MySqlCommand(req,connexion))
+                using (var cmd = new MySqlCommand(req, connexion))
                 {
                     connexion.Open();
                     using (var reader = cmd.ExecuteReader())
@@ -28,7 +28,7 @@ namespace GestionTachesAdmin.DataAccess
                             liste.Add(new Avancement
                             {
                                 NomEmp = reader.GetString("nom"),
-                                PrenomEmp=reader.GetString("prenom"),
+                                PrenomEmp = reader.GetString("prenom"),
                                 TacheName = reader.GetString("titre"),
                                 statut = reader.GetString("statut")
                             });
