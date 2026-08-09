@@ -1,4 +1,5 @@
-﻿namespace GestionTachesAdmin.Forms
+﻿using System.Drawing;
+namespace GestionTachesAdmin.Forms
 {
     partial class FormCommentaire
     {
@@ -28,17 +29,52 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dgvCommentaire = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgvCommentaire).BeginInit();
             SuspendLayout();
             // 
             // dgvCommentaire
             // 
-            dgvCommentaire.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCommentaire.Location = new Point(31, 4);
+            dgvCommentaire.AllowUserToAddRows = false;
+            dgvCommentaire.AllowUserToDeleteRows = false;
+            dgvCommentaire.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 249, 251);
+            dgvCommentaire.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCommentaire.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCommentaire.BackgroundColor = Color.White;
+            dgvCommentaire.BorderStyle = BorderStyle.None;
+            dgvCommentaire.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(40, 50, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvCommentaire.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvCommentaire.ColumnHeadersHeight = 38;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(220, 230, 245);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvCommentaire.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvCommentaire.EnableHeadersVisualStyles = false;
+            dgvCommentaire.GridColor = Color.FromArgb(230, 230, 230);
+            dgvCommentaire.Location = new Point(25, 12);
+            dgvCommentaire.MultiSelect = false;
             dgvCommentaire.Name = "dgvCommentaire";
+            dgvCommentaire.ReadOnly = true;
+            dgvCommentaire.RowHeadersVisible = false;
             dgvCommentaire.RowHeadersWidth = 51;
-            dgvCommentaire.Size = new Size(726, 434);
+            dgvCommentaire.RowTemplate.Height = 32;
+            dgvCommentaire.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCommentaire.Size = new Size(753, 416);
             dgvCommentaire.TabIndex = 0;
             // 
             // FormCommentaire

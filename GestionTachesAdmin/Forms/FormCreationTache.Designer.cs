@@ -143,19 +143,27 @@ namespace GestionTachesAdmin
             btnCreer.UseVisualStyleBackColor = false;
             btnCreer.Click += btnCreer_Click;
             // 
-            // dataGridViewTache
             // 
-            dataGridViewTache.AllowUserToAddRows = false;
-            dataGridViewTache.AllowUserToDeleteRows = false;
-            dataGridViewTache.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewTache.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTache.Location = new Point(560, 34);
-            dataGridViewTache.Name = "dataGridViewTache";
-            dataGridViewTache.RowHeadersVisible = false;
-            dataGridViewTache.RowHeadersWidth = 51;
-            dataGridViewTache.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTache.Size = new Size(540, 423);
-            dataGridViewTache.TabIndex = 10;
+            // dataGridViewTache (lecture seule + design)
+            // 
+            dataGridViewTache.ReadOnly = true;
+            dataGridViewTache.AllowUserToOrderColumns = false;
+            dataGridViewTache.AllowUserToResizeRows = false;
+            dataGridViewTache.MultiSelect = false;
+            dataGridViewTache.BackgroundColor = Color.White;
+            dataGridViewTache.BorderStyle = BorderStyle.None;
+            dataGridViewTache.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewTache.GridColor = Color.FromArgb(230, 230, 230);
+            dataGridViewTache.EnableHeadersVisualStyles = false;
+            dataGridViewTache.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 50, 70);
+            dataGridViewTache.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewTache.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            dataGridViewTache.ColumnHeadersHeight = 38;
+            dataGridViewTache.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F);
+            dataGridViewTache.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 230, 245);
+            dataGridViewTache.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridViewTache.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 249, 251);
+            dataGridViewTache.RowTemplate.Height = 32;
             // 
             // label1
             // 
