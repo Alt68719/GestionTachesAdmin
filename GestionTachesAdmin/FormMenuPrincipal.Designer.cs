@@ -150,7 +150,7 @@ namespace GestionTachesAdmin
         private Button btnOuvrirCreationEmploye;
         private Button btnOuvrirAttribution;
         private Button btnOuvrirAvancement;
-        private Button button1;
+ 
         private Button btnCommentaires;
     }
 }
