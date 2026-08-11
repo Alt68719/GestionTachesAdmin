@@ -17,6 +17,7 @@ namespace GestionTachesAdmin
         {
             string identifiant = txtIdentifiant.Text.Trim();
             string mdp = txtMotDePasse.Text;
+            //bool connexionValide = _service.VerifierConnexion(identifiant, mdp);
 
             if (string.IsNullOrEmpty(identifiant) || string.IsNullOrEmpty(mdp))
             {
@@ -37,9 +38,13 @@ namespace GestionTachesAdmin
                 if (authDAO.VerifierEmploye(identifiant, mdp))
                 {
                     MessageBox.Show($"Bienvenue Employé {identifiant} !", "Connexion réussie", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    FormMenuEmploye employeForm = new FormMenuEmploye(identifiant);
-                    employeForm.Show();
-                    this.Hide();
+                   // FormMenuEmploye employeForm = new FormMenuEmploye(identifiant);
+                   // employeForm.Show();
+                    //this.Hide();
+                    // 2. Passer le matricule au constructeur du FormMenuEmploye
+                    FormMenuEmploye menu = new FormMenuEmploye(identifiant);
+                    menu.Show();
+                    this.Hide(); // Cacher la fenêtre de connexion
                 }
                 else
                 {
