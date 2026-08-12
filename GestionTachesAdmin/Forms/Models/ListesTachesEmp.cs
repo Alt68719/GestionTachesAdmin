@@ -4,10 +4,11 @@ namespace GestionTachesAdmin.Forms.Models
 {
     public class ListesTachesEmp
     {
-        public int Id_tache { get; set; }
-        public string Titre_Tache { get; set; } = string.Empty;
-        public string Priorite_Tache { get; set; } = string.Empty;
-        public DateTime Date_Lime_Tache { get; set; }
-        public bool Statut_Tache { get; set; }
+        public int Idtache { get; set; }
+        public string titre { get; set; } = string.Empty;
+        public string description { get; set; } = string.Empty;
+        public string priorite { get; set; } = string.Empty;
+        public string status { get; set; } = string.Empty;
+        public DateTime date_limite { get; set; }
     }
 }

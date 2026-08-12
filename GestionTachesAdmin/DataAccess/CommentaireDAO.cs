@@ -29,7 +29,7 @@ namespace GestionTachesAdmin.DataAccess
                             commentaire.IdCommentaire = reader.GetInt32("id_commentaire");
                             commentaire.Contenu = reader.GetString("contenu");
                             commentaire.dateComment = reader.GetDateTime("date_commentaire");
-                            commentaire.matriculeEmp = reader.GetString("matricule_emp");
+                            commentaire.matriculeEmp = reader.GetString("matricule");
                             commentaire.idTache = reader.GetInt32("id_tache");
                             liste.Add(commentaire);
                         }

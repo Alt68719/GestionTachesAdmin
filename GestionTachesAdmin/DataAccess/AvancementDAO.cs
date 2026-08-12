@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using GestionTachesAdmin.Models;
 using GestionTachesAdmin.Forms.Models;
 
 namespace GestionTachesAdmin.DataAccess

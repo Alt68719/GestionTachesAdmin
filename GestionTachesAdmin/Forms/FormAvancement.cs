@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using GestionTachesAdmin.DataAccess;
 using GestionTachesAdmin.Forms.Models;
-using GestionTachesAdmin.Models;
 
 namespace GestionTachesAdmin
 {

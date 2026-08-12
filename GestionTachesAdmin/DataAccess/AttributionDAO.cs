@@ -1,5 +1,4 @@
 ﻿using GestionTachesAdmin.Forms.Models;
-using GestionTachesAdmin.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

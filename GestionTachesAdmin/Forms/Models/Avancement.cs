@@ -8,9 +8,9 @@ namespace GestionTachesAdmin.Forms.Models
 {
     public class Avancement
     {
-        public string TacheName { get; set; }
-        public string NomEmp { get; set; }
-        public string PrenomEmp { get; set; }
-        public string statut { get; set; }
+        public string TacheName { get; set; } = string.Empty;
+        public string NomEmp { get; set; } = string.Empty;
+        public string PrenomEmp { get; set; } = string.Empty;
+        public string statut { get; set; } = string.Empty;
     }
 }

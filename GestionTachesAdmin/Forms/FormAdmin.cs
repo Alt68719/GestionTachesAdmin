@@ -4,7 +4,6 @@ using System.Linq;
 using System.Windows.Forms;
 using GestionTachesAdmin.DataAccess;
 using GestionTachesAdmin.Forms.Models;
-using GestionTachesAdmin.Models;
 
 namespace GestionTachesAdmin
 {
