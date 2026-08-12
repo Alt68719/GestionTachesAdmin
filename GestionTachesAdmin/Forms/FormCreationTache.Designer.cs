@@ -21,6 +21,9 @@ namespace GestionTachesAdmin
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             lblHeader = new Label();
             lblTitre = new Label();
             txtTitre = new TextBox();
@@ -143,27 +146,41 @@ namespace GestionTachesAdmin
             btnCreer.UseVisualStyleBackColor = false;
             btnCreer.Click += btnCreer_Click;
             // 
+            // dataGridViewTache
             // 
-            // dataGridViewTache (lecture seule + design)
-            // 
-            dataGridViewTache.ReadOnly = true;
-            dataGridViewTache.AllowUserToOrderColumns = false;
             dataGridViewTache.AllowUserToResizeRows = false;
-            dataGridViewTache.MultiSelect = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 249, 251);
+            dataGridViewTache.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewTache.BackgroundColor = Color.White;
             dataGridViewTache.BorderStyle = BorderStyle.None;
             dataGridViewTache.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewTache.GridColor = Color.FromArgb(230, 230, 230);
-            dataGridViewTache.EnableHeadersVisualStyles = false;
-            dataGridViewTache.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 50, 70);
-            dataGridViewTache.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridViewTache.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(40, 50, 70);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewTache.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewTache.ColumnHeadersHeight = 38;
-            dataGridViewTache.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F);
-            dataGridViewTache.DefaultCellStyle.SelectionBackColor = Color.FromArgb(220, 230, 245);
-            dataGridViewTache.DefaultCellStyle.SelectionForeColor = Color.Black;
-            dataGridViewTache.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 249, 251);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(220, 230, 245);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridViewTache.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewTache.EnableHeadersVisualStyles = false;
+            dataGridViewTache.GridColor = Color.FromArgb(230, 230, 230);
+            dataGridViewTache.Location = new Point(567, 57);
+            dataGridViewTache.MultiSelect = false;
+            dataGridViewTache.Name = "dataGridViewTache";
+            dataGridViewTache.ReadOnly = true;
+            dataGridViewTache.RowHeadersWidth = 51;
             dataGridViewTache.RowTemplate.Height = 32;
+            dataGridViewTache.Size = new Size(533, 378);
+            dataGridViewTache.TabIndex = 14;
             // 
             // label1
             // 

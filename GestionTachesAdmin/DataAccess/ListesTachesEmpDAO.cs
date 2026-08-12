@@ -9,56 +9,59 @@ namespace GestionTachesAdmin.DataAccess
     {
         public List<ListesTachesEmp> GetListesTachesParEmps(string matricule)
         {
-            List<ListesTachesEmp> listes = new List<ListesTachesEmp>();
+            List<ListesTachesEmp> liste = new List<ListesTachesEmp>();
 
-            string query = @"SELECT t.id_tache, t.titre, t.description, t.priorite, t.date_limite, t.statut, a.date_attribution FROM tache t INNER JOIN attribution a ON t.id_tache = a.id_tache WHERE a.matricule = @matricule";
-
-            using (MySqlConnection connexion = ConnexionBD.GetConnection())
-            {
-                using (MySqlCommand cmd = new MySqlCommand(query, connexion))
-                {
-                    cmd.Parameters.AddWithValue("@matricule", (matricule ?? string.Empty).Trim());
-
-                    connexion.Open();
-
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string statutStr = reader["statut"] != DBNull.Value ? (reader["statut"].ToString() ?? string.Empty) : string.Empty;
-
-                            ListesTachesEmp tache = new ListesTachesEmp
-                            {
-                                Id_tache = reader["id_tache"] != DBNull.Value ? Convert.ToInt32(reader["id_tache"]) : 0,
-                                Titre_Tache = reader["titre"] != DBNull.Value ? (reader["titre"].ToString() ?? string.Empty) : string.Empty,
-                                Priorite_Tache = reader["priorite"] != DBNull.Value ? (reader["priorite"].ToString() ?? string.Empty) : string.Empty,
-                                Date_Lime_Tache = reader["date_limite"] != DBNull.Value ? Convert.ToDateTime(reader["date_limite"]) : DateTime.Now,
-                                Statut_Tache = statutStr.Equals("Terminé", StringComparison.OrdinalIgnoreCase) || statutStr.Equals("1")
-                            };
-
-                            listes.Add(tache);
-                        }
-                    }
-                }
-            }
-            return listes;
-        }
-
-        public bool ChangerStatutTache(int idTache, string nouveauStatut)
-        {
-            string query = "UPDATE tache SET statut = @statut WHERE id_tache = @id";
+            string query = @"SELECT t.id_tache, t.titre, t.description, t.priorite, t.statut, t.date_limite FROM tache t INNER JOIN attribution a ON t.id_tache = a.id_tache WHERE a.matricule = @matricule";
 
             using (MySqlConnection conn = ConnexionBD.GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@statut", nouveauStatut ?? string.Empty);
-                    cmd.Parameters.AddWithValue("@id", idTache);
-
+                    cmd.Parameters.AddWithValue("@matricule", matricule ?? string.Empty);
                     conn.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    return rowsAffected > 0;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            liste.Add(new ListesTachesEmp
+                            {
+                                Idtache = Convert.ToInt32(reader["id_tache"]),
+                                titre = reader["titre"] != DBNull.Value ? reader["titre"].ToString()! : string.Empty,
+                                description = reader["description"] != DBNull.Value ? reader["description"].ToString()! : string.Empty,
+                                priorite = reader["priorite"] != DBNull.Value ? reader["priorite"].ToString()! : string.Empty,
+                                status = reader["statut"] != DBNull.Value ? reader["statut"].ToString()! : string.Empty,
+                                date_limite = reader["date_limite"] != DBNull.Value ? Convert.ToDateTime(reader["date_limite"]) : DateTime.MinValue
+                            });
+                        }
+                    }
                 }
+            }
+            return liste;
+        }
+
+        public bool ChangerStatutTache(int idTache, string nouveauStatut)
+        {
+            string query = "UPDATE tache SET statut = @statut WHERE id_tache = @idTache";
+
+            try
+            {
+                using (MySqlConnection conn = ConnexionBD.GetConnection())
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@statut", nouveauStatut ?? "En cours");
+                        cmd.Parameters.AddWithValue("@idTache", idTache);
+
+                        conn.Open();
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show("Erreur SQL lors du changement de statut : " + ex.Message);
+                return false;
             }
         }
     }

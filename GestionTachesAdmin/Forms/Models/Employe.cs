@@ -1,12 +1,12 @@
-﻿namespace GestionTachesAdmin.Models
+﻿namespace GestionTachesAdmin.Forms.Models
 {
     public class Employe
     {
-        public string Matricule { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-        public string Poste { get; set; }
-        public string MotDePasse { get; set; } // Nouvel attribut ajouté
+        public string Matricule { get; set; } = string.Empty;
+        public string Nom { get; set; } = string.Empty;
+        public string Prenom { get; set; } = string.Empty;
+        public string Poste { get; set; } = string.Empty;
+        public string MotDePasse { get; set; } = string.Empty;
         public string NomComplet => $"{Nom} {Prenom} ({Matricule})";
     }
 }

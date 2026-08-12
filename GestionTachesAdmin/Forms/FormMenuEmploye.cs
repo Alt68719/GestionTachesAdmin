@@ -20,11 +20,18 @@ namespace GestionTachesAdmin.Forms
             InitializeComponent();
             this.matricule = matricule ?? string.Empty;
             this.Load += new EventHandler(this.FormAdmin_load);
+
+            if (this.tabControl1 != null)
+            {
+                this.tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            }
         }
 
         private async void FormAdmin_load(object? sender, EventArgs e)
         {
+            AppliquerStyleGrid();
             ConfigDataGridView();
+            ChargerFormulaireCommentaire();
 
             if (!string.IsNullOrEmpty(this.matricule))
             {
@@ -36,57 +43,113 @@ namespace GestionTachesAdmin.Forms
             }
         }
 
+        private void tabControl1_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                ChargerFormulaireCommentaire();
+            }
+        }
+
+        private void ChargerFormulaireCommentaire()
+        {
+            if (tabControl1.TabPages.Count < 2) return;
+
+            TabPage tabCommentairePage = tabControl1.TabPages[1];
+
+            if (tabCommentairePage.Controls.Count > 0 && tabCommentairePage.Controls[0] is FormCommentaireEmp)
+            {
+                return;
+            }
+
+            FormCommentaireEmp formCommentaire = new FormCommentaireEmp(this.matricule);
+            formCommentaire.TopLevel = false;
+            formCommentaire.FormBorderStyle = FormBorderStyle.None;
+            formCommentaire.Dock = DockStyle.Fill;
+
+            tabCommentairePage.Controls.Clear();
+            tabCommentairePage.Controls.Add(formCommentaire);
+            formCommentaire.Show();
+        }
+
+        private void AppliquerStyleGrid()
+        {
+            dataGridViewTaches.EnableHeadersVisualStyles = false;
+            dataGridViewTaches.BorderStyle = BorderStyle.None;
+            dataGridViewTaches.BackgroundColor = Color.White;
+
+            dataGridViewTaches.Dock = DockStyle.None;
+            dataGridViewTaches.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            dataGridViewTaches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewTaches.ColumnHeadersHeight = 35;
+            dataGridViewTaches.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 122, 204);
+            dataGridViewTaches.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewTaches.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dataGridViewTaches.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            dataGridViewTaches.DefaultCellStyle.SelectionBackColor = Color.FromArgb(51, 153, 255);
+            dataGridViewTaches.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridViewTaches.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular);
+            dataGridViewTaches.RowTemplate.Height = 28;
+
+            dataGridViewTaches.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(235, 243, 250);
+            dataGridViewTaches.GridColor = Color.FromArgb(220, 224, 230);
+            dataGridViewTaches.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewTaches.RowHeadersVisible = false;
+        }
+
         private void ConfigDataGridView()
         {
             dataGridViewTaches.AutoGenerateColumns = false;
             dataGridViewTaches.Columns.Clear();
 
-            //Description
             DataGridViewTextBoxColumn colDescription = new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Titre_Tache",
+                DataPropertyName = "titre",
                 HeaderText = "Description",
-                Width = 300
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             };
             dataGridViewTaches.Columns.Add(colDescription);
 
-            //Date limite
             DataGridViewTextBoxColumn colDate = new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Date_Lime_Tache",
+                DataPropertyName = "date_limite",
                 HeaderText = "Limite",
-                Width = 120
+                Width = 120,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             };
             colDate.DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridViewTaches.Columns.Add(colDate);
 
-            //Priorite
             DataGridViewTextBoxColumn colPriorite = new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Priorite_Tache",
+                DataPropertyName = "priorite",
                 HeaderText = "Priorité",
-                Width = 100
+                Width = 100,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             };
             dataGridViewTaches.Columns.Add(colPriorite);
 
-            //Statut
             DataGridViewTextBoxColumn colStatu = new DataGridViewTextBoxColumn
             {
-                DataPropertyName = "Statut_Tache",
+                DataPropertyName = "status",
                 HeaderText = "Statut",
-                Width = 100
+                Width = 100,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             };
             dataGridViewTaches.Columns.Add(colStatu);
 
-            //Action
             DataGridViewButtonColumn colAction = new DataGridViewButtonColumn
             {
                 Name = "colAction",
                 HeaderText = "Action",
                 UseColumnTextForButtonValue = false,
-                Width = 130
+                Width = 140,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None
             };
             dataGridViewTaches.Columns.Add(colAction);
+
             dataGridViewTaches.CellFormatting -= DataGridViewTaches_CellFormatting;
             dataGridViewTaches.CellFormatting += DataGridViewTaches_CellFormatting;
 
@@ -101,8 +164,8 @@ namespace GestionTachesAdmin.Forms
                 _tachesActuelles = _service.GetListesTachesParEmps(matriculeCode);
 
                 _tachesActuelles = _tachesActuelles
-                    .OrderBy(t => t.Statut_Tache)
-                    .ThenBy(t => t.Date_Lime_Tache)
+                    .OrderBy(t => t.status)
+                    .ThenBy(t => t.date_limite)
                     .ToList();
 
                 dataGridViewTaches.DataSource = null;
@@ -120,11 +183,23 @@ namespace GestionTachesAdmin.Forms
         {
             foreach (DataGridViewRow row in dataGridViewTaches.Rows)
             {
-                if (row.DataBoundItem is ListesTachesEmp tache)
+                if (row?.DataBoundItem is ListesTachesEmp tache)
                 {
-                    if (tache.Statut_Tache)
+                    var cellStyle = row.DefaultCellStyle;
+                    if (cellStyle != null)
                     {
-                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        if (string.Equals(tache.status, "Terminé", StringComparison.OrdinalIgnoreCase))
+                        {
+                            cellStyle.BackColor = Color.LightGreen;
+                        }
+                        else if (tache.date_limite < DateTime.Now)
+                        {
+                            cellStyle.BackColor = Color.LightGray;
+                        }
+                        else
+                        {
+                            cellStyle.BackColor = row.Index % 2 == 0 ? Color.White : Color.FromArgb(235, 243, 250);
+                        }
                     }
                 }
             }
@@ -137,27 +212,18 @@ namespace GestionTachesAdmin.Forms
             var column = dataGridViewTaches.Columns[e.ColumnIndex];
             if (column == null) return;
 
-            //Statut
-            if (column.DataPropertyName == "Statut_Tache" && e.Value != null)
-            {
-                if (e.Value is bool estTermine)
-                {
-                    e.Value = estTermine ? "Terminé" : "En cours";
-                    e.FormattingApplied = true;
-                }
-            }
-
-            //action
             if (column.Name == "colAction")
             {
                 var row = dataGridViewTaches.Rows[e.RowIndex];
                 if (row?.DataBoundItem is ListesTachesEmp tache)
                 {
-                    e.Value = tache.Statut_Tache ? "Rouvrir" : "Marquer Terminé";
+                    bool estTermine = string.Equals(tache.status, "Terminé", StringComparison.OrdinalIgnoreCase);
+                    e.Value = estTermine ? "Rouvrir" : "Marquer Terminé";
                     e.FormattingApplied = true;
                 }
             }
-            if (column.DataPropertyName == "Priorite_Tache" && e.Value != null)
+
+            if (column.DataPropertyName == "priorite" && e.Value != null)
             {
                 string priorite = e.Value.ToString() ?? string.Empty;
                 switch (priorite)
@@ -187,9 +253,10 @@ namespace GestionTachesAdmin.Forms
                 var row = dataGridViewTaches.Rows[e.RowIndex];
                 if (row?.DataBoundItem is ListesTachesEmp tacheSelectionnee)
                 {
-                    string nouveauStatut = tacheSelectionnee.Statut_Tache ? "En cours" : "Terminé";
+                    bool estTermine = string.Equals(tacheSelectionnee.status, "Terminé", StringComparison.OrdinalIgnoreCase);
+                    string nouveauStatut = estTermine ? "En cours" : "Terminé";
 
-                    bool succes = _service.ChangerStatutTache(tacheSelectionnee.Id_tache, nouveauStatut);
+                    bool succes = _service.ChangerStatutTache(tacheSelectionnee.Idtache, nouveauStatut);
 
                     if (succes)
                     {

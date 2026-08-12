@@ -9,9 +9,9 @@ namespace GestionTachesAdmin.Forms.Models
     public class HistoriqueItem
     {
         public int IdHistorique { get; set; }
-        public string actionRealisee { get; set; }
+        public string actionRealisee { get; set; } = string.Empty;
+        public string Employe { get; set; } = string.Empty;
+        public string Tache { get; set; } = string.Empty;
         public DateTime DateAction { get; set; }
-        public string Employe { get; set; }
-        public string Tache { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using GestionTachesAdmin.Models;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 using Org.BouncyCastle.Ocsp;
 using System.Data;
