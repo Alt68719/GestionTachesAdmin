@@ -13,19 +13,12 @@ namespace GestionTachesAdmin.Forms
         private CommentaireEmpDAO _commentaireService = new CommentaireEmpDAO();
         private List<ListesTachesEmp> _listeTaches = new List<ListesTachesEmp>();
 
-        public FormCommentaireEmp()
-        {
-            InitializeComponent();
-            this.matricule = string.Empty;
-        }
-
         public FormCommentaireEmp(string matricule)
         {
             InitializeComponent();
             this.matricule = matricule ?? string.Empty;
         }
 
-        // Événement de chargement du formulaire
         private void FormCommentaireEmp_Load(object sender, EventArgs e)
         {
             ChargerListeTaches();
@@ -79,13 +72,12 @@ namespace GestionTachesAdmin.Forms
             }
         }
 
-        // Evenement declenche lors du changement de selection dans la ComboBox
         private void cmbTaches_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ChargerCommentairesTache();
         }
 
-        // Evenement declenche au clic sur le bouton Envoyer
+        
         private void btnEnvoyerCommentaire_Click_1(object sender, EventArgs e)
         {
             string texteCommentaire = txtNouveauCommentaire.Text.Trim();

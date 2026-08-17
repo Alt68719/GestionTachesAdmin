@@ -19,14 +19,17 @@
         {
             tabControl1 = new TabControl();
             tabLstes = new TabPage();
+            label1 = new Label();
             dataGridViewTaches = new DataGridView();
+            panel1 = new Panel();
             tabCommentaire = new TabPage();
             tabNotification = new TabPage();
-            label1 = new Label();
-            panel1 = new Panel();
+            dataGridViewNotif = new DataGridView();
             tabControl1.SuspendLayout();
             tabLstes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTaches).BeginInit();
+            tabNotification.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNotif).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -56,6 +59,18 @@
             tabLstes.Text = "Listes des taches";
             tabLstes.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Gainsboro;
+            label1.Font = new Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkSlateGray;
+            label1.Location = new Point(393, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(248, 27);
+            label1.TabIndex = 1;
+            label1.Text = "LISTEA DES TACHES";
+            // 
             // dataGridViewTaches
             // 
             dataGridViewTaches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -66,6 +81,14 @@
             dataGridViewTaches.RowHeadersWidth = 51;
             dataGridViewTaches.Size = new Size(1051, 591);
             dataGridViewTaches.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Gainsboro;
+            panel1.Location = new Point(0, 13);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1056, 42);
+            panel1.TabIndex = 2;
             // 
             // tabCommentaire
             // 
@@ -80,6 +103,7 @@
             // 
             // tabNotification
             // 
+            tabNotification.Controls.Add(dataGridViewNotif);
             tabNotification.Location = new Point(4, 29);
             tabNotification.Margin = new Padding(4, 5, 4, 5);
             tabNotification.Name = "tabNotification";
@@ -88,25 +112,14 @@
             tabNotification.Text = "Notification";
             tabNotification.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // dataGridViewNotif
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Gainsboro;
-            label1.Font = new Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkSlateGray;
-            label1.Location = new Point(393, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(248, 27);
-            label1.TabIndex = 1;
-            label1.Text = "LISTEA DES TACHES";
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.Gainsboro;
-            panel1.Location = new Point(0, 13);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1056, 42);
-            panel1.TabIndex = 2;
+            dataGridViewNotif.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewNotif.Location = new Point(3, 87);
+            dataGridViewNotif.Name = "dataGridViewNotif";
+            dataGridViewNotif.RowHeadersWidth = 51;
+            dataGridViewNotif.Size = new Size(1053, 569);
+            dataGridViewNotif.TabIndex = 0;
             // 
             // FormMenuEmploye
             // 
@@ -122,6 +135,8 @@
             tabLstes.ResumeLayout(false);
             tabLstes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTaches).EndInit();
+            tabNotification.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNotif).EndInit();
             ResumeLayout(false);
 
         }
@@ -135,5 +150,6 @@
         private System.Windows.Forms.TabPage tabNotification;
         private Label label1;
         private Panel panel1;
+        private DataGridView dataGridViewNotif;
     }
 }

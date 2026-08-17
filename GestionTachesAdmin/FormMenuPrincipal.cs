@@ -51,5 +51,11 @@ namespace GestionTachesAdmin
             FormCommentaire formCommentaire = new FormCommentaire();
             formCommentaire.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormRapportProductivite formRapportProductivite = new FormRapportProductivite();
+            formRapportProductivite.Show();
+        }
     }
 }

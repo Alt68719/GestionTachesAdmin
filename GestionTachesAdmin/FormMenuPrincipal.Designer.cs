@@ -27,6 +27,7 @@ namespace GestionTachesAdmin
             btnOuvrirAttribution = new Button();
             btnOuvrirAvancement = new Button();
             btnCommentaires = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // lblHeader
@@ -50,7 +51,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreation.FlatStyle = FlatStyle.Flat;
             btnOuvrirCreation.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirCreation.ForeColor = Color.White;
-            btnOuvrirCreation.Location = new Point(246, 62);
+            btnOuvrirCreation.Location = new Point(12, 110);
             btnOuvrirCreation.Name = "btnOuvrirCreation";
             btnOuvrirCreation.Size = new Size(350, 50);
             btnOuvrirCreation.TabIndex = 1;
@@ -66,7 +67,7 @@ namespace GestionTachesAdmin
             btnOuvrirCreationEmploye.FlatStyle = FlatStyle.Flat;
             btnOuvrirCreationEmploye.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirCreationEmploye.ForeColor = Color.White;
-            btnOuvrirCreationEmploye.Location = new Point(246, 138);
+            btnOuvrirCreationEmploye.Location = new Point(12, 245);
             btnOuvrirCreationEmploye.Name = "btnOuvrirCreationEmploye";
             btnOuvrirCreationEmploye.Size = new Size(350, 50);
             btnOuvrirCreationEmploye.TabIndex = 2;
@@ -82,7 +83,7 @@ namespace GestionTachesAdmin
             btnOuvrirAttribution.FlatStyle = FlatStyle.Flat;
             btnOuvrirAttribution.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirAttribution.ForeColor = Color.White;
-            btnOuvrirAttribution.Location = new Point(246, 215);
+            btnOuvrirAttribution.Location = new Point(12, 397);
             btnOuvrirAttribution.Name = "btnOuvrirAttribution";
             btnOuvrirAttribution.Size = new Size(350, 50);
             btnOuvrirAttribution.TabIndex = 3;
@@ -98,7 +99,7 @@ namespace GestionTachesAdmin
             btnOuvrirAvancement.FlatStyle = FlatStyle.Flat;
             btnOuvrirAvancement.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnOuvrirAvancement.ForeColor = Color.White;
-            btnOuvrirAvancement.Location = new Point(246, 289);
+            btnOuvrirAvancement.Location = new Point(513, 110);
             btnOuvrirAvancement.Name = "btnOuvrirAvancement";
             btnOuvrirAvancement.Size = new Size(350, 50);
             btnOuvrirAvancement.TabIndex = 4;
@@ -114,7 +115,7 @@ namespace GestionTachesAdmin
             btnCommentaires.FlatStyle = FlatStyle.Flat;
             btnCommentaires.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             btnCommentaires.ForeColor = Color.White;
-            btnCommentaires.Location = new Point(246, 364);
+            btnCommentaires.Location = new Point(513, 245);
             btnCommentaires.Name = "btnCommentaires";
             btnCommentaires.Size = new Size(350, 50);
             btnCommentaires.TabIndex = 5;
@@ -122,12 +123,29 @@ namespace GestionTachesAdmin
             btnCommentaires.UseVisualStyleBackColor = false;
             btnCommentaires.Click += btnCommentaires_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(0, 122, 204);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(513, 397);
+            button1.Name = "button1";
+            button1.Size = new Size(350, 50);
+            button1.TabIndex = 6;
+            button1.Text = "Rapport de Productivité";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // FormMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(875, 485);
+            Controls.Add(button1);
             Controls.Add(btnCommentaires);
             Controls.Add(lblHeader);
             Controls.Add(btnOuvrirAvancement);
@@ -152,5 +170,6 @@ namespace GestionTachesAdmin
         private Button btnOuvrirAvancement;
  
         private Button btnCommentaires;
+        private Button button1;
     }
 }
