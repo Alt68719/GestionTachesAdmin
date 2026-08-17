@@ -1,27 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using GestionTachesAdmin.Forms;
 
 namespace GestionTachesAdmin.DataAccess
 {
-    public class CommentaireModel
-    {
-        public int IdCommentaire { get; set; }
-        public string Contenu { get; set; } = string.Empty;
-        public DateTime DateCommentaire { get; set; }
-        public string Matricule { get; set; } = string.Empty;
-        public int IdTache { get; set; }
-    }
-
     public class CommentaireEmpDAO
     {
-        private string connectionstring = "Server=localhost;Database=gestion_taches_employes;Uid=root;Pwd=DERALAZA;";
-
         public List<CommentaireModel> GetCommentairesParTache(int idTache)
         {
             List<CommentaireModel> liste = new List<CommentaireModel>();
 
-            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            using (MySqlConnection conn = ConnexionBD.GetConnection())
             {
                 conn.Open();
                 string query = "SELECT id_commentaire, contenu, date_commentaire, matricule, id_tache FROM commentaire WHERE id_tache = @idTache ORDER BY date_commentaire ASC";
@@ -51,7 +41,7 @@ namespace GestionTachesAdmin.DataAccess
 
         public bool AjouterCommentaire(int idTache, string matricule, string contenu)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionstring))
+            using (MySqlConnection conn = ConnexionBD.GetConnection())
             {
                 conn.Open();
                 string query = "INSERT INTO commentaire (contenu, date_commentaire, matricule, id_tache) VALUES (@contenu, NOW(), @matricule, @idTache)";

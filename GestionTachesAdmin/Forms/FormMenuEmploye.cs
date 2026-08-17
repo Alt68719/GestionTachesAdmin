@@ -30,8 +30,10 @@ namespace GestionTachesAdmin.Forms
         private async void FormAdmin_load(object? sender, EventArgs e)
         {
             AppliquerStyleGrid();
+            AppliquerStyleGridNotif();
             ConfigDataGridView();
             ChargerFormulaireCommentaire();
+
 
             if (!string.IsNullOrEmpty(this.matricule))
             {
@@ -48,6 +50,34 @@ namespace GestionTachesAdmin.Forms
             if (tabControl1.SelectedIndex == 1)
             {
                 ChargerFormulaireCommentaire();
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                // On charge uniquement les notifications ici
+                chargerNotification();
+
+                // /!\ La ligne ConfigDataGridView() a été retirée car elle configurait 
+                // le tableau des tâches au lieu du tableau des notifications.
+            }
+        }
+
+        private void chargerNotification()
+        {
+            try
+            {
+                NotificationDAO notificationDAO = new NotificationDAO();
+                List<Notification> list = notificationDAO.GetNotifications(this.matricule);
+
+                dataGridViewNotif.DataSource = null;
+                dataGridViewNotif.DataSource = list;
+                if (dataGridViewNotif.Columns.Count > 0)
+                {
+                    dataGridViewNotif.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du chargement des notifications : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -71,7 +101,39 @@ namespace GestionTachesAdmin.Forms
             tabCommentairePage.Controls.Add(formCommentaire);
             formCommentaire.Show();
         }
+        private void AppliquerStyleGridNotif()
+        {
+            // Désactiver les styles visuels par défaut de Windows
+            dataGridViewNotif.EnableHeadersVisualStyles = false;
+            dataGridViewNotif.BorderStyle = BorderStyle.None;
+            dataGridViewNotif.BackgroundColor = Color.White;
+            dataGridViewNotif.GridColor = Color.FromArgb(230, 230, 230); 
+            dataGridViewNotif.Dock = DockStyle.Fill;
+            dataGridViewNotif.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewNotif.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewNotif.ColumnHeadersHeight = 40;
+            dataGridViewNotif.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(32, 35, 42); 
+            dataGridViewNotif.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridViewNotif.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 10F);
+            dataGridViewNotif.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(32, 35, 42);
+            dataGridViewNotif.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewNotif.DefaultCellStyle.BackColor = Color.White;
+            dataGridViewNotif.DefaultCellStyle.ForeColor = Color.FromArgb(64, 64, 64);
+            dataGridViewNotif.DefaultCellStyle.Font = new Font("Segoe UI", 10F);
+            dataGridViewNotif.DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 240, 240); 
+            dataGridViewNotif.DefaultCellStyle.SelectionForeColor = Color.FromArgb(64, 64, 64);
 
+           
+            dataGridViewNotif.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(250, 250, 250);
+
+            
+            dataGridViewNotif.RowTemplate.Height = 45;
+            dataGridViewNotif.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewNotif.RowHeadersVisible = false; 
+            dataGridViewNotif.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewNotif.AllowUserToAddRows = false;
+            dataGridViewNotif.AllowUserToResizeRows = false;
+        }
         private void AppliquerStyleGrid()
         {
             dataGridViewTaches.EnableHeadersVisualStyles = false;
